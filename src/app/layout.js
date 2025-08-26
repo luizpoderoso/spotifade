@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
+import AppHeader from "./_components/AppHeader";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -21,7 +22,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`min-w-screen ${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`min-w-screen ${geistSans.variable} ${geistMono.variable} antialiased space-y-10`}
       >
         <ThemeProvider
           attribute="class"
@@ -29,6 +30,7 @@ export default function RootLayout({ children }) {
           enableSystem
           disableTransitionOnChange
         >
+          <AppHeader />
           {children}
         </ThemeProvider>
       </body>
