@@ -13,12 +13,12 @@ export default function AppHeader() {
         <ArrowRightToLine />
         <span className="ml-2 text-lg font-semibold">SpotiFade</span>
       </Link>
-      <nav className="ml-auto flex gap-4 sm:gap-6">
+      <nav className="ml-auto flex gap-2 sm:gap-4">
         <Link href="/musics/add">
           <Button variant="link">Nova Música</Button>
         </Link>
         <Link href="/musics">
-          <Button variant="link">Música Salvas</Button>
+          <Button variant="link">Músicas Salvas</Button>
         </Link>
       </nav>
     </header>
