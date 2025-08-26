@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "SpotSova",
-  description: "Adicione suas músicas favoritas!",
+  title: "SpotiFade",
+  description: "Salve suas músicas favoritas, acesse-as a qualquer momento.",
 };
 
 export default function RootLayout({ children }) {

@@ -11,7 +11,7 @@ export default function AppHeader() {
         className="flex items-center justify-center"
       >
         <ArrowRightToLine />
-        <span className="ml-2 text-lg font-semibold">SpotSova</span>
+        <span className="ml-2 text-lg font-semibold">SpotiFade</span>
       </Link>
       <nav className="ml-auto flex gap-4 sm:gap-6">
         <Link href="/musics/add">
