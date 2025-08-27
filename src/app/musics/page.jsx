@@ -9,8 +9,10 @@ export default async function MusicsPage() {
   const songs = await Song.find({});
 
   return (
-    <div className="container mx-auto flex flex-col justify-center">
-      <MusicList initialSongs={JSON.parse(JSON.stringify(songs))} />
+    <div className="min-w-screen flex justify-center">
+      <div className="flex flex-col justify-center">
+        <MusicList initialSongs={JSON.parse(JSON.stringify(songs))} />
+      </div>
     </div>
   );
 }
