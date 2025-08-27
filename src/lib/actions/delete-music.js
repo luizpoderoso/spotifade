@@ -8,7 +8,7 @@ export async function deleteSong(_, formData) {
   console.log(id);
 
   try {
-    await Song.deleteOne({ _id: id });
+    await Song.deleteOne({ spotifyId: id });
 
     revalidatePath("/musics");
 
