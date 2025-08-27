@@ -1,37 +1,3 @@
-const STORAGE_KEY = "livraria::musics";
-
-// Carregar músicas salvas
-const loadMusics = () => {
-  const data = localStorage.getItem(STORAGE_KEY);
-  return data ? JSON.parse(data) : [];
-};
-
-// Salvar músicas novas
-const saveMusics = (musics) =>
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(musics));
-
-// Limpar todas as músicas existentes na lista
-const clearMusics = () => {
-  localStorage.removeItem(STORAGE_KEY);
-  console.log("Não há mais músicas aqui!");
-};
-
-// Reseta músicas temporárias não salvas
-const resetMusics = () => {
-  const musics = [
-    //???
-    //banco de músicas
-  ];
-
-  //Salva as músicas no local storage
-  saveMusics(musics);
-  console.log("Músicas salvas na sua playlist!!");
-  return musics; // Mostra as músicas salvas no banco
-};
-
-// Adiciona uma nova música
-const addMusic = (musics, newMusic) => [...musics, newMusic];
-
 // Atualiza uma música já existente (novo nome, etc)
 const updateMusic = (musics, id, changes) =>
   musics.map((music) => (music.id === id ? { ...music, ...changes } : music));
@@ -52,13 +18,13 @@ const listMusics = (musics) =>
 const listMusicByArtist = (musics, singerName) =>
   musics.filter((music) => music.singer === singerName);
 
-// Mostra as músicas por popularidade
-const listMusicByPopularity = (musics) => {
+// Ordena as músicas por popularidade
+export const sortMusicByPopularity = (musics) => {
   return musics.slice().sort((a, b) => b.popularity - a.popularity);
 };
 
 // Mostra as músicas por data (mais nova)
-const listMusicByReleaseDate = (musics) => {
+export const sortMusicByReleaseDate = (musics) => {
   return [...musics].sort((a, b) => {
     return new Date(b.releaseDate) - new Date(a.releaseDate);
   });
