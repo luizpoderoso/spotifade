@@ -5,9 +5,8 @@ import Song from "@/lib/db/models/Song";
 import MusicList from "./_components/MusicList";
 
 export default async function MusicsPage() {
-  // await dbConnect();
-  // const songs = await Song.find({});
-  const songs = []
+  await dbConnect();
+  const songs = await Song.find({});
 
   return (
     <div className="container mx-auto flex justify-center">
