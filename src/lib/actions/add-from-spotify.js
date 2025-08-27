@@ -2,14 +2,20 @@
 
 import dbConnect from "../db/dbConnect";
 import Song from "../db/models/Song";
+import { getAccessToken } from "../spotify";
 
 export async function addFromSpotify(_, formData) {
+  // Obtém o id da música do Spotify
   const url = formData.get("url");
   const id = url.split("/").pop();
 
+  // Obtém o token de acesso do Spotify
+  const accessToken = await getAccessToken();
+
+  // Obtém as informações da música do Spotify
   const response = await fetch(`https://api.spotify.com/v1/tracks/${id}`, {
     headers: {
-      Authorization: `Bearer ${process.env.SPOTIFY_ACCESS_TOKEN}`,
+      Authorization: `Bearer ${accessToken}`,
     },
   });
 
@@ -21,9 +27,9 @@ export async function addFromSpotify(_, formData) {
 
   const data = await response.json();
 
+  // Adicionar na DB
   try {
     await dbConnect();
-    // Adicionar na DB
     const song = await Song.create({
       spotifyId: data.id,
       title: data.name,
