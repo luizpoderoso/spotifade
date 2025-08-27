@@ -2,14 +2,13 @@
 
 import { Button } from "@/components/ui/button";
 import { deleteSong } from "@/lib/actions/delete-music";
-import { useActionState } from "react";
+import { useActionState, useEffect } from "react";
 import { useFormStatus } from "react-dom";
 
 const initialState = { success: null, message: "" };
 
 export default function DeleteButton({ id }) {
   const [state, action] = useActionState(deleteSong, initialState);
-  console.log(id)
 
   return (
     <form action={action}>
@@ -23,7 +22,7 @@ function SubmitButton() {
   const { pending } = useFormStatus();
 
   return (
-    <Button className="w-full" variant="destructive" disabled={pending}>
+    <Button onClick={() => console.log(id)} className="w-full" variant="destructive" disabled={pending}>
       {pending ? "Deletando..." : "Deletar"}
     </Button>
   );
