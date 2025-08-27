@@ -10,7 +10,7 @@ export default async function MusicsPage() {
 
   return (
     <div className="container mx-auto flex justify-center">
-      <MusicList songs={JSON.parse(JSON.stringify(songs))} />
+      <MusicList initialSongs={JSON.parse(JSON.stringify(songs))} />
     </div>
   );
 }

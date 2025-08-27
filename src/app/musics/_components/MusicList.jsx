@@ -9,7 +9,7 @@ import {
 import Link from "next/link";
 import DeleteButton from "./DeleteButton";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 
 export default function MusicList({ initialSongs }) {
