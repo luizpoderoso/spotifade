@@ -12,9 +12,15 @@ import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 
-export default function MusicList({ songs }) {
+export default function MusicList({ initialSongs }) {
   const INTERVAL_TIME = 10000;
   const router = useRouter();
+
+  const [songs, setSongs] = useState(initialSongs);
+
+  useEffect(() => {
+    setSongs(initialSongs);
+  }, [initialSongs]);
 
   useEffect(() => {
     const interval = setInterval(() => {
