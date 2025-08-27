@@ -2,15 +2,13 @@
 
 import { Button } from "@/components/ui/button";
 import { deleteSong } from "@/lib/actions/delete-music";
-import { useActionState, useEffect } from "react";
+import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
 
 const initialState = { success: null, message: "" };
 
 export default function DeleteButton({ id }) {
-  const [state, action] = useActionState(deleteSong, initialState);
-
-  console.log(id);
+  const [_, action] = useActionState(deleteSong, initialState);
 
   return (
     <form action={action}>
