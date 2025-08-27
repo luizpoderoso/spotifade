@@ -28,6 +28,8 @@ export async function addFromSpotify(_, formData) {
 
   const data = await response.json();
 
+  console.log(data);
+
   // Adicionar na DB
   try {
     await dbConnect();
@@ -35,7 +37,7 @@ export async function addFromSpotify(_, formData) {
       spotifyId: data.id,
       title: data.name,
       artists: data.artists.map((e) => e.name),
-      releaseDate: data.release_date,
+      releaseDate: data.album.release_date,
       popularity: data.popularity,
       durationMs: data.duration_ms,
       spotifyUrl: data.external_urls.spotify,
