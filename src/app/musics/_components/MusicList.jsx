@@ -23,13 +23,13 @@ export default function MusicList({ initialSongs }) {
     setSongs(initialSongs);
   }, [initialSongs]);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      router.refresh();
-    }, INTERVAL_TIME);
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     router.refresh();
+  //   }, INTERVAL_TIME);
 
-    return () => clearInterval(interval);
-  }, [router]);
+  //   return () => clearInterval(interval);
+  // }, [router]);
 
   return (
     <>
