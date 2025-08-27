@@ -10,6 +10,7 @@ import {
 import dbConnect from "@/lib/db/dbConnect";
 import Song from "@/lib/db/models/Song";
 import Link from "next/link";
+import DeleteButton from "./_components/DeleteButton";
 
 export default async function MusicsPage() {
   await dbConnect();
@@ -39,9 +40,7 @@ export default async function MusicsPage() {
                 </ul>
               </CardContent>
               <CardFooter className="w-full grid grid-cols-2 px-11 gap-3">
-                <Button disabled variant="destructive">
-                  Deletar
-                </Button>
+                <DeleteButton id={song.id} />
                 <Button disabled variant="default">
                   Atualizar
                 </Button>
