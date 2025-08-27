@@ -1,5 +1,6 @@
 "use server";
 
+import { revalidatePath } from "next/cache";
 import dbConnect from "../db/dbConnect";
 import Song from "../db/models/Song";
 import { getAccessToken } from "../spotify";
@@ -40,6 +41,9 @@ export async function addFromSpotify(_, formData) {
       spotifyUrl: data.external_urls.spotify,
       imageUrl: data.album.images[0].url,
     });
+
+    revalidatePath("/musics/add");
+
     return { success: true, song: JSON.parse(JSON.stringify(song)) };
   } catch (err) {
     console.error(err);
