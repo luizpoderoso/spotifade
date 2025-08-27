@@ -42,7 +42,7 @@ export async function addFromSpotify(_, formData) {
       imageUrl: data.album.images[0].url,
     });
 
-    revalidatePath("/musics/add");
+    revalidatePath("/musics/");
 
     return { success: true, song: JSON.parse(JSON.stringify(song)) };
   } catch (err) {
