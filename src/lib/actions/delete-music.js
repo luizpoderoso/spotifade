@@ -2,12 +2,13 @@
 
 import { revalidatePath } from "next/cache";
 import Song from "../db/models/Song";
+import dbConnect from "../db/dbConnect";
 
 export async function deleteSong(_, formData) {
   const id = formData.get("id");
-  console.log(id);
 
   try {
+    await dbConnect();
     await Song.deleteOne({ spotifyId: id });
 
     revalidatePath("/musics");

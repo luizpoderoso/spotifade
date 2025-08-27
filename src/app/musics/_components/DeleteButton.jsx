@@ -10,6 +10,8 @@ const initialState = { success: null, message: "" };
 export default function DeleteButton({ id }) {
   const [state, action] = useActionState(deleteSong, initialState);
 
+  console.log(id);
+
   return (
     <form action={action}>
       <SubmitButton />
@@ -22,7 +24,12 @@ function SubmitButton() {
   const { pending } = useFormStatus();
 
   return (
-    <Button type="submit" className="w-full" variant="destructive" disabled={pending}>
+    <Button
+      type="submit"
+      className="w-full"
+      variant="destructive"
+      disabled={pending}
+    >
       {pending ? "Deletando..." : "Deletar"}
     </Button>
   );
