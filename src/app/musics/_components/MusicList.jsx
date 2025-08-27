@@ -33,7 +33,7 @@ export default function MusicList({ initialSongs }) {
 
   return (
     <>
-      <div className="flex space-x-8">
+      <div className="flex space-x-8 justify-center">
         <Button onClick={() => {
           setSongs(sortMusicByPopularity(songs))
         }}>Ordenar por popularidade</Button>

@@ -5,12 +5,13 @@ import Song from "@/lib/db/models/Song";
 import MusicList from "./_components/MusicList";
 
 export default async function MusicsPage() {
-  await dbConnect();
-  const songs = await Song.find({});
+  // await dbConnect();
+  // const songs = await Song.find({});
+  const songs = []
 
   return (
     <div className="min-w-screen flex justify-center">
-      <div className="flex flex-col justify-center">
+      <div className="flex flex-col justify-center gap-2">
         <MusicList initialSongs={JSON.parse(JSON.stringify(songs))} />
       </div>
     </div>
