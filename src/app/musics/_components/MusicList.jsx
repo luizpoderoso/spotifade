@@ -11,7 +11,8 @@ import DeleteButton from "./DeleteButton";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { sortMusicByPopularity, sortMusicByReleaseDate } from "@/lib/functional/lib";
+import ButtonList from "./ButtonList";
+import { areListsEqual } from "@/lib/functional/lib";
 
 export default function MusicList({ initialSongs }) {
   const INTERVAL_TIME = 10000;
@@ -20,27 +21,25 @@ export default function MusicList({ initialSongs }) {
   const [songs, setSongs] = useState(initialSongs);
 
   useEffect(() => {
-    setSongs(initialSongs);
+    // Se alguma música nova tiver sido adicionada, atualizar o estado
+    if (!areListsEqual(initialSongs, songs)) {
+      window.alert("Alguém adicionou uma nova música, atualizando...");
+      setSongs(initialSongs);
+    }
   }, [initialSongs]);
 
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     router.refresh();
-  //   }, INTERVAL_TIME);
+  // Forçar a atualização de songs
+  useEffect(() => {
+    const interval = setInterval(() => {
+      router.refresh();
+    }, INTERVAL_TIME);
 
-  //   return () => clearInterval(interval);
-  // }, [router]);
+    return () => clearInterval(interval);
+  }, [router]);
 
   return (
-    <>
-      <div className="flex space-x-8 justify-center">
-        <Button onClick={() => {
-          setSongs(sortMusicByPopularity(songs))
-        }}>Ordenar por popularidade</Button>
-        <Button onClick={() => {
-          setSongs(sortMusicByReleaseDate(songs))
-        }}>Ordenar por data de lançamento</Button>
-      </div>
+    <div>
+      <ButtonList songs={songs} setSongs={setSongs} />
       <ul className="w-full max-w-7xl flex flex-col items-center lg:grid lg:grid-cols-3 gap-10">
         {songs.map((song) => (
           <li className="w-full max-w-sm" key={song.spotifyId}>
@@ -72,6 +71,6 @@ export default function MusicList({ initialSongs }) {
           </li>
         ))}
       </ul>
-    </>
+    </div>
   );
 }

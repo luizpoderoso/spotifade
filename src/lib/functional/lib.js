@@ -14,6 +14,14 @@ export const sortMusicByReleaseDate = (musics) => {
   });
 };
 
+// Compara se duas listas têm os mesmos elementos, independentemente da ordem
+export const areListsEqual = (list1, list2) => {
+  if (list1.length !== list2.length) return false;
+  const sortedList1 = [...list1].sort();
+  const sortedList2 = [...list2].sort();
+  return JSON.stringify(sortedList1) === JSON.stringify(sortedList2);
+};
+
 // Faz a contagem de quantas músicas cada artista possui
 const countMusicsBySinger = (musics) =>
   musics.reduce((acc, music) => {

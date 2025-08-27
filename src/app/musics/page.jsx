@@ -10,7 +10,7 @@ export default async function MusicsPage() {
 
   return (
     <div className="min-w-screen flex justify-center">
-      <div className="flex flex-col justify-center gap-2">
+      <div className="flex flex-col justify-center">
         <MusicList initialSongs={JSON.parse(JSON.stringify(songs))} />
       </div>
     </div>
