@@ -5,6 +5,7 @@ import Song from "../db/models/Song";
 
 export async function deleteSong(_, formData) {
   const id = formData.get("id");
+  console.log(id);
 
   try {
     await Song.deleteOne({ _id: id });

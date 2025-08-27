@@ -1,19 +1,3 @@
-// Atualiza uma música já existente (novo nome, etc)
-const updateMusic = (musics, id, changes) =>
-  musics.map((music) => (music.id === id ? { ...music, ...changes } : music));
-
-// Elimina a música especificada
-const deleteMusic = (musics, id) => musics.filter((music) => music.id !== id);
-
-// Mostra todas as músicas
-const listMusics = (musics) =>
-  musics
-    .map(
-      (music) =>
-        `${music.id} - "${music.name}" (${music.singer}, ${music.year})`,
-    )
-    .join("\n");
-
 // Mostra as músicas por artista
 const listMusicByArtist = (musics, singerName) =>
   musics.filter((music) => music.singer === singerName);

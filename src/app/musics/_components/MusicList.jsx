@@ -63,7 +63,7 @@ export default function MusicList({ initialSongs }) {
                 </ul>
               </CardContent>
               <CardFooter className="w-full grid grid-cols-2 px-11 gap-3">
-                <DeleteButton id={song.id} />
+                <DeleteButton id={song.spotifyId} />
                 <Button disabled variant="default">
                   Atualizar
                 </Button>
