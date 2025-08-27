@@ -22,7 +22,7 @@ function SubmitButton() {
   const { pending } = useFormStatus();
 
   return (
-    <Button onClick={() => console.log(id)} className="w-full" variant="destructive" disabled={pending}>
+    <Button type="submit" className="w-full" variant="destructive" disabled={pending}>
       {pending ? "Deletando..." : "Deletar"}
     </Button>
   );
