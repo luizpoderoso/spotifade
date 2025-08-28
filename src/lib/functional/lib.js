@@ -30,5 +30,7 @@ const countMusicsBySinger = (musics) =>
   }, {});
 
 // Modifica os dados já existentes em uma música
-const updateMusicName = (musics, transformFn) =>
-  musics.map((music) => ({ ...music, title: transformFn(music.title) }));
+const updateMusicInfo = (music, toUpdate) => ({
+  ...music,
+  ...toUpdate,
+});

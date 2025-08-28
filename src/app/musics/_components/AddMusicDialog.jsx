@@ -43,7 +43,6 @@ export default function AddMusicDialog() {
 }
 
 function SubmitButton({ onOpenChange }) {
-  const formRef = useRef(null);
   const submitButtonRef = useRef(null);
 
   async function handleSubmit(formData) {
@@ -64,7 +63,7 @@ function SubmitButton({ onOpenChange }) {
   }
 
   return (
-    <form ref={formRef} name="add-music" id="add-music" action={handleSubmit}>
+    <form name="add-music" id="add-music" action={handleSubmit}>
       <Button ref={submitButtonRef} type="submit">
         Adicionar
       </Button>
