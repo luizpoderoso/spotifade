@@ -6,7 +6,7 @@ import MusicsView from "./_components/MusicsView";
 
 export default async function MusicsPage() {
   await dbConnect();
-  const fetchedSongs = await Song.find({});
+  const fetchedSongs = await Song.find({}).sort({ _id: -1 });
   const plainSongs = JSON.parse(JSON.stringify(fetchedSongs));
 
   return <MusicsView initialSongs={plainSongs} />;
