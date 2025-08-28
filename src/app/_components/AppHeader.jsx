@@ -14,11 +14,8 @@ export default function AppHeader() {
         <span className="ml-2 text-lg font-semibold">SpotiFade</span>
       </Link>
       <nav className="ml-auto flex gap-2 sm:gap-4">
-        <Link href="/musics/add">
-          <Button variant="link">Nova Música</Button>
-        </Link>
         <Link href="/musics">
-          <Button variant="link">Músicas Salvas</Button>
+          <Button variant="link">Suas Músicas</Button>
         </Link>
       </nav>
     </header>

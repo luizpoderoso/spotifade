@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`min-w-screen ${geistSans.variable} ${geistMono.variable} antialiased space-y-10`}
+        className={`min-w-screen ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ThemeProvider
           attribute="class"
@@ -31,7 +31,7 @@ export default function RootLayout({ children }) {
           disableTransitionOnChange
         >
           <AppHeader />
-          {children}
+          <div className="w-full h-full py-5">{children}</div>
         </ThemeProvider>
       </body>
     </html>

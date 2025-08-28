@@ -3,39 +3,39 @@
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
-  DialogClose,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
+  DialogOverlay,
+  DialogPortal,
   DialogTitle,
+  DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { addFromSpotify } from "@/lib/actions/add-from-spotify";
-import { X } from "lucide-react";
 import { useRef } from "react";
 
 export default function AddMusicDialog({ open, setOpen }) {
   return (
-    <Dialog open={open}>
-      <DialogContent>
-        <DialogHeader>
-          <DialogClose className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none">
-            <X className="h-4 w-4" />
-            <span className="sr-only">Close</span>
-          </DialogClose>
-          <DialogTitle>Adicione uma música</DialogTitle>
-          <DialogDescription>Conexão com API do Spotify</DialogDescription>
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button variant="outline">Adicionar Música</Button>
+      </DialogTrigger>
+      <DialogPortal>
+        <DialogOverlay className="bg-blackA6 data-[state=open]:animate-overlayShow" />
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Adicione uma música</DialogTitle>
+            <DialogDescription>Conexão com API do Spotify</DialogDescription>
+          </DialogHeader>
           <Input
             form="add-music"
             name="url"
             placeholder="Cole o link da música aqui"
           />
-        </DialogHeader>
-        <DialogFooter className="flex">
           <SubmitButton setOpen={setOpen} />
-        </DialogFooter>
-      </DialogContent>
+        </DialogContent>
+      </DialogPortal>
     </Dialog>
   );
 }

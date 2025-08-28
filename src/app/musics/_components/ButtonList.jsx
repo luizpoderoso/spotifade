@@ -29,12 +29,7 @@ export default function ButtonList({ songs, setSongs }) {
       >
         Ordenar por data de lançamento
       </Button>
-      <Button onClick={() => setAddDialogOpen(true)} variant="outline">
-        Adicionar Música
-      </Button>
-      {addDialogOpen && (
-        <AddMusicDialog open={addDialogOpen} setOpen={setAddDialogOpen} />
-      )}
+      <AddMusicDialog open={addDialogOpen} setOpen={setAddDialogOpen} />
     </div>
   );
 }
