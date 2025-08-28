@@ -13,11 +13,13 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { addFromSpotify } from "@/lib/actions/add-from-spotify";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
-export default function AddMusicDialog({ open, setOpen }) {
+export default function AddMusicDialog() {
+  const [open, onOpenChange] = useState(false);
+
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogTrigger asChild>
         <Button variant="outline">Adicionar Música</Button>
       </DialogTrigger>
@@ -33,14 +35,14 @@ export default function AddMusicDialog({ open, setOpen }) {
             name="url"
             placeholder="Cole o link da música aqui"
           />
-          <SubmitButton setOpen={setOpen} />
+          <SubmitButton onOpenChange={onOpenChange} />
         </DialogContent>
       </DialogPortal>
     </Dialog>
   );
 }
 
-function SubmitButton({ setOpen }) {
+function SubmitButton({ onOpenChange }) {
   const formRef = useRef(null);
   const submitButtonRef = useRef(null);
 
@@ -57,7 +59,7 @@ function SubmitButton({ setOpen }) {
       console.error(error);
       window.alert("Erro ao adicionar música");
     } finally {
-      setOpen(false);
+      onOpenChange(false);
     }
   }
 

@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -13,10 +15,13 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { formatDuration } from "@/lib/aux";
 import { Pencil } from "lucide-react";
+import { useState } from "react";
 
 export default function EditDialog({ song }) {
+  const [open, onOpenChange] = useState(false);
+
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogTrigger asChild>
         <Button variant="outline" alt="Edit Music" title="Edit Music">
           <Pencil />

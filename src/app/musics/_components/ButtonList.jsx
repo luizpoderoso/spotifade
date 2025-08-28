@@ -5,12 +5,9 @@ import {
   sortMusicByPopularity,
   sortMusicByReleaseDate,
 } from "@/lib/functional/lib";
-import { useState } from "react";
 import AddMusicDialog from "./AddMusicDialog";
 
 export default function ButtonList({ songs, setSongs }) {
-  const [addDialogOpen, setAddDialogOpen] = useState(false);
-
   return (
     <div className="max-w-screen overflow-scroll flex justify-start space-x-3 mb-5 sm:justify-center">
       <Button
@@ -29,7 +26,7 @@ export default function ButtonList({ songs, setSongs }) {
       >
         Ordenar por data de lançamento
       </Button>
-      <AddMusicDialog open={addDialogOpen} setOpen={setAddDialogOpen} />
+      <AddMusicDialog />
     </div>
   );
 }
