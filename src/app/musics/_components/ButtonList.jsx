@@ -12,7 +12,7 @@ export default function ButtonList({ songs, setSongs }) {
   const [addDialogOpen, setAddDialogOpen] = useState(false);
 
   return (
-    <div className="flex space-x-8 mb-5 justify-center">
+    <div className="flex space-x-3 mb-5 justify-center">
       <Button
         variant="outline"
         onClick={() => {

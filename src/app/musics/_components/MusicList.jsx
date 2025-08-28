@@ -27,14 +27,14 @@ export default function MusicList({ initialSongs }) {
     }
   }, [initialSongs]);
 
-  // Forçar a atualização de songs
-  useEffect(() => {
-    const interval = setInterval(() => {
-      router.refresh();
-    }, INTERVAL_TIME);
+  // // Forçar a atualização de songs
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     router.refresh();
+  //   }, INTERVAL_TIME);
 
-    return () => clearInterval(interval);
-  }, [router]);
+  //   return () => clearInterval(interval);
+  // }, [router]);
 
   return (
     <div>
