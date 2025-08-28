@@ -1,75 +1,56 @@
 "use client";
 
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Play } from "lucide-react";
+import { Trash } from "lucide-react";
+import { Pencil } from "lucide-react";
 import Link from "next/link";
 import DeleteButton from "./DeleteButton";
-import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
-import { Button } from "@/components/ui/button";
-import ButtonList from "./ButtonList";
-import { areListsEqual } from "@/lib/functional/lib";
 
-export default function MusicList({ initialSongs }) {
-  const INTERVAL_TIME = 10000;
-  const router = useRouter();
-
-  const [songs, setSongs] = useState(initialSongs);
-
-  useEffect(() => {
-    // Se alguma música nova tiver sido adicionada, atualizar o estado
-    if (!areListsEqual(initialSongs, songs)) {
-      setSongs(initialSongs);
-    }
-  }, [initialSongs]);
-
-  // // Forçar a atualização de songs
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     router.refresh();
-  //   }, INTERVAL_TIME);
-
-  //   return () => clearInterval(interval);
-  // }, [router]);
-
+export default function MusicList({ songs }) {
   return (
-    <div>
-      <ButtonList songs={songs} setSongs={setSongs} />
-      <ul className="w-full max-w-7xl flex flex-col items-center lg:grid lg:grid-cols-3 gap-10">
-        {songs.map((song) => (
-          <li className="w-full max-w-sm" key={song.spotifyId}>
-            <Card className="w-full">
-              <CardHeader className="w-full flex justify-center">
-                <Link href={song.spotifyUrl}>
-                  <img
-                    className="rounded overflow-hidden"
-                    src={song.imageUrl}
-                    alt={song.title}
-                    width={300}
-                    height={300}
-                  />
-                </Link>
-              </CardHeader>
-              <CardContent className="flex flex-col items-center">
-                <h3 className="text-lg font-bold">{song.title}</h3>
-                <ul>
-                  <p>{song.artists.join(", ")}</p>
-                </ul>
-              </CardContent>
-              <CardFooter className="w-full grid grid-cols-2 px-11 gap-3">
-                <DeleteButton id={song.spotifyId} />
-                <Button disabled variant="default">
-                  Atualizar
-                </Button>
-              </CardFooter>
-            </Card>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <ul className="w-full max-w-7xl flex flex-col items-center gap-5">
+      {songs.map((song) => (
+        <li className="w-full max-w-md" key={song.spotifyId}>
+          <Card className="w-full h-full flex flex-row py-0 rounded overflow-hidden gap-0">
+            <img
+              src={song.imageUrl}
+              alt={song.title}
+              width={130}
+              height={130}
+            />
+            <div className="w-full flex flex-col py-3 -space-y-1 px-3">
+              <p className="font-semibold">{song.title}</p>
+              <p className="text-sm text-gray-400">{song.artists.join(", ")}</p>
+              <p className="text-xs">{formatDuration(song.durationMs)}</p>
+              <div className="grow"></div>
+              <div className="w-full flex relative justify-between">
+                <div className="flex justify-start w-full pr-3">
+                  <Link className="w-full" href={song.spotifyUrl}>
+                    <Button className="w-full" variant="outline">
+                      Ouvir
+                      <Play />
+                    </Button>
+                  </Link>
+                </div>
+                <div className="flex justify-end gap-2">
+                  <Button variant="outline">
+                    <Pencil />
+                  </Button>
+                  <DeleteButton id={song.spotifyId} />
+                </div>
+              </div>
+            </div>
+          </Card>
+        </li>
+      ))}
+    </ul>
   );
+}
+
+function formatDuration(durationMs) {
+  const minutes = Math.floor(durationMs / 60000);
+  const seconds = Math.floor((durationMs % 60000) / 1000);
+  return `${minutes}m ${seconds.toString().padStart(2, "0")}s`;
 }

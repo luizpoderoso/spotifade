@@ -2,6 +2,8 @@
 
 import { Button } from "@/components/ui/button";
 import { deleteSong } from "@/lib/actions/delete-music";
+import { Loader } from "lucide-react";
+import { Trash } from "lucide-react";
 import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
 
@@ -22,13 +24,8 @@ function SubmitButton() {
   const { pending } = useFormStatus();
 
   return (
-    <Button
-      type="submit"
-      className="w-full"
-      variant="destructive"
-      disabled={pending}
-    >
-      {pending ? "Deletando..." : "Deletar"}
+    <Button type="submit" variant="destructive" disabled={pending}>
+      {pending ? <Loader /> : <Trash />}
     </Button>
   );
 }

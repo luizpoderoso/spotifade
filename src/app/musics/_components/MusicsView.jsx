@@ -1,0 +1,22 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import ButtonList from "./ButtonList";
+import MusicList from "./MusicList";
+
+export default function MusicsView({ initialSongs }) {
+  const [songs, setSongs] = useState([]);
+
+  useEffect(() => {
+    setSongs(initialSongs);
+  }, [initialSongs]);
+
+  return (
+    <div className="min-w-screen flex justify-center">
+      <div className="flex flex-col justify-center">
+        <ButtonList songs={songs} setSongs={setSongs} />
+        <MusicList songs={songs} />
+      </div>
+    </div>
+  );
+}

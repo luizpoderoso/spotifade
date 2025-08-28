@@ -2,17 +2,12 @@
 
 import dbConnect from "@/lib/db/dbConnect";
 import Song from "@/lib/db/models/Song";
-import MusicList from "./_components/MusicList";
+import MusicsView from "./_components/MusicsView";
 
 export default async function MusicsPage() {
   await dbConnect();
-  const songs = await Song.find({});
+  const fetchedSongs = await Song.find({});
+  const plainSongs = JSON.parse(JSON.stringify(fetchedSongs));
 
-  return (
-    <div className="min-w-screen flex justify-center">
-      <div className="flex flex-col justify-center">
-        <MusicList initialSongs={JSON.parse(JSON.stringify(songs))} />
-      </div>
-    </div>
-  );
+  return <MusicsView initialSongs={plainSongs} />;
 }
