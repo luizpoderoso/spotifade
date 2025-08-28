@@ -3,16 +3,15 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Play } from "lucide-react";
-import { Trash } from "lucide-react";
 import { Pencil } from "lucide-react";
 import Link from "next/link";
 import DeleteButton from "./DeleteButton";
 
 export default function MusicList({ songs }) {
   return (
-    <ul className="w-full max-w-7xl flex flex-col items-center gap-5">
+    <ul className="w-full flex flex-col items-center gap-5">
       {songs.map((song) => (
-        <li className="w-full max-w-md" key={song.spotifyId}>
+        <li className="w-full max-w-sm sm:max-w-md" key={song.spotifyId}>
           <Card className="w-full h-full flex flex-row py-0 rounded overflow-hidden gap-0">
             <img
               src={song.imageUrl}
@@ -21,8 +20,8 @@ export default function MusicList({ songs }) {
               height={130}
             />
             <div className="w-full flex flex-col py-3 -space-y-1 px-3">
-              <p className="font-semibold">{song.title}</p>
-              <p className="text-sm text-gray-400">{song.artists.join(", ")}</p>
+              <p className="text-sm font-semibold">{song.title}</p>
+              <p className="text-xs text-gray-400">{song.artists.join(", ")}</p>
               <p className="text-xs">{formatDuration(song.durationMs)}</p>
               <div className="grow"></div>
               <div className="w-full flex relative justify-between">

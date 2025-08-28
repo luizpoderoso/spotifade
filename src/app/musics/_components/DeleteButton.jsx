@@ -25,7 +25,7 @@ function SubmitButton() {
 
   return (
     <Button type="submit" variant="destructive" disabled={pending}>
-      {pending ? <Loader /> : <Trash />}
+      {pending ? <Loader className="transition animate-spin" /> : <Trash />}
     </Button>
   );
 }
