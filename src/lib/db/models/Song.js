@@ -6,6 +6,11 @@ const SongSchema = new Schema({
     type: String,
     unique: true,
   },
+  userId: {
+    type: String,
+    required: true,
+    index: true,
+  },
   title: {
     type: String,
     required: true,
