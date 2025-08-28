@@ -22,7 +22,7 @@ export default function AddMusicDialog({ open, setOpen }) {
         <Button variant="outline">Adicionar Música</Button>
       </DialogTrigger>
       <DialogPortal>
-        <DialogOverlay className="bg-blackA6 data-[state=open]:animate-overlayShow" />
+        <DialogOverlay />
         <DialogContent>
           <DialogHeader>
             <DialogTitle>Adicione uma música</DialogTitle>

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import ButtonList from "./ButtonList";
-import MusicList from "./MusicList";
+import MusicList from "./music-list/MusicList";
 
 export default function MusicsView({ initialSongs }) {
   const [songs, setSongs] = useState([]);

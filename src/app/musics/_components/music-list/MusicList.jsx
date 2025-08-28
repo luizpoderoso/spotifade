@@ -3,9 +3,10 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Play } from "lucide-react";
-import { Pencil } from "lucide-react";
 import Link from "next/link";
 import DeleteButton from "./DeleteButton";
+import EditDialog from "./EditDialog";
+import { formatDuration } from "@/lib/aux";
 
 export default function MusicList({ songs }) {
   return (
@@ -34,9 +35,7 @@ export default function MusicList({ songs }) {
                   </Link>
                 </div>
                 <div className="flex justify-end gap-2">
-                  <Button variant="outline">
-                    <Pencil />
-                  </Button>
+                  <EditDialog song={song} />
                   <DeleteButton id={song.spotifyId} />
                 </div>
               </div>
@@ -46,10 +45,4 @@ export default function MusicList({ songs }) {
       ))}
     </ul>
   );
-}
-
-function formatDuration(durationMs) {
-  const minutes = Math.floor(durationMs / 60000);
-  const seconds = Math.floor((durationMs % 60000) / 1000);
-  return `${minutes}m ${seconds.toString().padStart(2, "0")}s`;
 }

@@ -24,7 +24,13 @@ function SubmitButton() {
   const { pending } = useFormStatus();
 
   return (
-    <Button type="submit" variant="destructive" disabled={pending}>
+    <Button
+      type="submit"
+      variant="destructive"
+      disabled={pending}
+      alt="Delete Music"
+      title="Delete Music"
+    >
       {pending ? <Loader className="transition animate-spin" /> : <Trash />}
     </Button>
   );
