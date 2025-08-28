@@ -5,7 +5,7 @@ import dbConnect from "../db/dbConnect";
 import Song from "../db/models/Song";
 import { getAccessToken } from "../spotify";
 
-export async function addFromSpotify(_, formData) {
+export async function addFromSpotify(formData) {
   // Obtém o id da música do Spotify
   const url = formData.get("url");
   const id = url.split("/").pop();
@@ -28,8 +28,6 @@ export async function addFromSpotify(_, formData) {
 
   const data = await response.json();
 
-  console.log(data);
-
   // Adicionar na DB
   try {
     await dbConnect();
@@ -47,9 +45,9 @@ export async function addFromSpotify(_, formData) {
     // Força a página /musics a atualizar
     revalidatePath("/musics");
 
-    return { success: true, song: JSON.parse(JSON.stringify(song)) };
+    return JSON.parse(JSON.stringify(song));
   } catch (err) {
     console.error(err);
-    return { error: `Erro ao adicionar a música: ${err.message}` };
+    throw err;
   }
 }

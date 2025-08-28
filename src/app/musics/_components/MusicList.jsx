@@ -23,7 +23,6 @@ export default function MusicList({ initialSongs }) {
   useEffect(() => {
     // Se alguma música nova tiver sido adicionada, atualizar o estado
     if (!areListsEqual(initialSongs, songs)) {
-      window.alert("Alguém adicionou uma nova música, atualizando...");
       setSongs(initialSongs);
     }
   }, [initialSongs]);
