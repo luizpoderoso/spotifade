@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 const SongSchema = new Schema({
   spotifyId: {
     type: String,
-    unique: true,
+    required: true,
   },
   userId: {
     type: String,
@@ -17,7 +17,7 @@ const SongSchema = new Schema({
   },
   spotifyUrl: {
     type: String,
-    unique: true,
+    required: true,
   },
   imageUrl: {
     type: String,
