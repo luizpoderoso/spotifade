@@ -1,4 +1,6 @@
 import { Button } from "@/components/ui/button";
+import { SignedIn, SignOutButton, SignUpButton } from "@clerk/nextjs";
+import { SignedOut, SignInButton } from "@clerk/nextjs";
 import { ArrowRightToLine } from "lucide-react";
 import Link from "next/link";
 
@@ -14,9 +16,22 @@ export default function AppHeader() {
         <span className="ml-2 text-lg font-semibold">SpotiFade</span>
       </Link>
       <nav className="ml-auto flex gap-2 sm:gap-4">
-        <Link href="/musics">
-          <Button variant="link">Suas Músicas</Button>
-        </Link>
+        <SignedOut>
+          <SignInButton>
+            <Button variant="ghost">Entrar</Button>
+          </SignInButton>
+          <SignUpButton>
+            <Button variant="default">Cadastrar-se</Button>
+          </SignUpButton>
+        </SignedOut>
+        <SignedIn>
+          <Link href="/musics">
+            <Button variant="ghost">Suas Músicas</Button>
+          </Link>
+          <SignOutButton>
+            <Button variant="ghost">Sair</Button>
+          </SignOutButton>
+        </SignedIn>
       </nav>
     </header>
   );

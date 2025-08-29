@@ -4,8 +4,15 @@ import { revalidatePath } from "next/cache";
 import dbConnect from "../db/dbConnect";
 import Song from "../db/models/Song";
 import { getAccessToken } from "../spotify";
+import { auth } from "@clerk/nextjs/server";
 
 export async function addFromSpotify(formData) {
+  const { userId } = await auth();
+
+  if (!userId) {
+    throw new Error("Unauthorized");
+  }
+
   // Obtém o id da música do Spotify
   const url = formData.get("url");
   const id = url.split("/").pop();
@@ -33,6 +40,7 @@ export async function addFromSpotify(formData) {
     await dbConnect();
     const song = await Song.create({
       spotifyId: data.id,
+      userId,
       title: data.name,
       artists: data.artists.map((e) => e.name),
       releaseDate: data.album.release_date,
