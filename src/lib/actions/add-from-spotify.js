@@ -30,7 +30,7 @@ export async function addFromSpotify(formData) {
   if (!response.ok) {
     const error = response.headers.get("error_description");
     console.error(error);
-    return { error: `Erro ao buscar a música: ${error}` };
+    throw new Error(`Erro ao buscar a música: ${error}`);
   }
 
   const data = await response.json();

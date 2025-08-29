@@ -55,8 +55,8 @@ function SubmitButton({ onOpenChange }) {
       await addFromSpotify(formData);
       window.alert("Música adicionada com sucesso!");
     } catch (error) {
-      console.error(error);
-      window.alert("Erro ao adicionar música");
+      console.error(error.message);
+      window.alert("Erro ao adicionar música.");
     } finally {
       onOpenChange(false);
     }
