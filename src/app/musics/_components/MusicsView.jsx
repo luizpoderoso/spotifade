@@ -14,7 +14,11 @@ export default function MusicsView({ initialSongs }) {
   return (
     <div className="min-w-screen flex justify-center">
       <div className="flex flex-col justify-center">
-        <ButtonList songs={songs} setSongs={setSongs} />
+        <ButtonList
+          initialSongs={initialSongs}
+          songs={songs}
+          setSongs={setSongs}
+        />
         <MusicList songs={songs} />
       </div>
     </div>

@@ -34,3 +34,15 @@ const updateMusicInfo = (music, toUpdate) => ({
   ...music,
   ...toUpdate,
 });
+
+// Busca músicas por título ou artista
+export const searchFilter = (musics, searchTerm) => {
+  const filtered = musics.filter(
+    (music) =>
+      music.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      music.artists.some((artist) =>
+        artist.toLowerCase().includes(searchTerm.toLowerCase()),
+      ),
+  );
+  return filtered;
+};
