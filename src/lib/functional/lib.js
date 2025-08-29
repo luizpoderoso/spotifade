@@ -14,20 +14,21 @@ export const sortMusicByReleaseDate = (musics) => {
   });
 };
 
-// Compara se duas listas têm os mesmos elementos, independentemente da ordem
-export const areListsEqual = (list1, list2) => {
-  if (list1.length !== list2.length) return false;
-  const sortedList1 = [...list1].sort();
-  const sortedList2 = [...list2].sort();
-  return JSON.stringify(sortedList1) === JSON.stringify(sortedList2);
-};
-
 // Faz a contagem de quantas músicas cada artista possui
-const countMusicsBySinger = (musics) =>
+export const countMusicsByArtists = (musics) =>
   musics.reduce((acc, music) => {
-    acc[music.singer] = (acc[music.singer] || 0) + 1;
+    functionalForEach(music.artists, (artist) => {
+      acc[artist] = (acc[artist] || 0) + 1;
+    });
     return acc;
   }, {});
+
+const functionalForEach = ([x, ...xs], callback) => {
+  callback(x);
+  if (countLength(xs) > 0) functionalForEach(xs, callback);
+};
+
+const countLength = ([x, ...xs]) => (x === undefined ? 0 : 1 + countLength(xs));
 
 // Modifica os dados já existentes em uma música
 const updateMusicInfo = (music, toUpdate) => ({
