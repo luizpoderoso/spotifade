@@ -1,5 +1,10 @@
 import { Button } from "@/components/ui/button";
-import { SignedIn, SignOutButton, SignUpButton } from "@clerk/nextjs";
+import {
+  SignedIn,
+  SignOutButton,
+  SignUpButton,
+  UserButton,
+} from "@clerk/nextjs";
 import { SignedOut, SignInButton } from "@clerk/nextjs";
 import { ArrowRightToLine } from "lucide-react";
 import Link from "next/link";
@@ -28,9 +33,7 @@ export default function AppHeader() {
           <Link href="/musics">
             <Button variant="ghost">Suas Músicas</Button>
           </Link>
-          <SignOutButton>
-            <Button variant="ghost">Sair</Button>
-          </SignOutButton>
+          <UserButton />
         </SignedIn>
       </nav>
     </header>

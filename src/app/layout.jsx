@@ -4,6 +4,7 @@ import { ThemeProvider } from "next-themes";
 import AppHeader from "./_components/AppHeader";
 import { ClerkProvider } from "@clerk/nextjs";
 import { ptBR } from "@clerk/localizations";
+import { dark } from "@clerk/themes";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,7 +23,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <ClerkProvider localization={ptBR}>
+    <ClerkProvider appearance={dark} localization={ptBR}>
       <html lang="en" suppressHydrationWarning>
         <body
           className={`min-w-screen ${geistSans.variable} ${geistMono.variable} antialiased`}
