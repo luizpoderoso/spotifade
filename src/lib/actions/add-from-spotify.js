@@ -34,6 +34,7 @@ export async function addFromSpotify(formData) {
   }
 
   const data = await response.json();
+  console.log(data);
 
   // Adicionar na DB
   try {

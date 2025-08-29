@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import ButtonList from "./ButtonList";
+import ButtonList from "./button-list/ButtonList";
 import MusicList from "./music-list/MusicList";
 
 export default function MusicsView({ initialSongs }) {
