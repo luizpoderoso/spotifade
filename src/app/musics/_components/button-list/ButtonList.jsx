@@ -7,7 +7,7 @@ import SortDialog from "./SortDialog";
 
 export default function ButtonList({ initialSongs, songs, setSongs }) {
   return (
-    <div className="max-w-screen overflow-scroll flex justify-start space-x-3 mb-5 sm:justify-center">
+    <div className="max-w-screen overflow-auto flex justify-start space-x-3 mb-5 sm:justify-center">
       <SortDialog songs={songs} setSongs={setSongs} />
       <AddMusicDialog />
       <SearchDialog initialSongs={initialSongs} setSongs={setSongs} />
