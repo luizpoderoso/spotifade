@@ -46,10 +46,12 @@ function SubmitButton({ onOpenChange }) {
   const submitButtonRef = useRef(null);
 
   async function handleSubmit(formData) {
-    if (submitButtonRef.current) {
-      submitButtonRef.current.disabled = true;
-      submitButtonRef.current.textContent = "Adicionando...";
+    if (formData.get("url") === "") {
+      window.alert("Insira um link válido para uma track no Spotify.");
+      return;
     }
+
+    toggleSubmitButton(submitButtonRef);
 
     try {
       await addFromSpotify(formData);
@@ -69,4 +71,14 @@ function SubmitButton({ onOpenChange }) {
       </Button>
     </form>
   );
+}
+
+function toggleSubmitButton(ref) {
+  if (ref.current) {
+    console.log(ref.current.disabled);
+    ref.current.disabled = !ref.current.disabled;
+    ref.current.textContent = ref.current.disabled
+      ? "Adicionando..."
+      : "Adicionar";
+  }
 }
