@@ -1,6 +1,7 @@
 "use client";
 
 import AddMusicDialog from "./AddMusicDialog";
+import CountByArtistsDialog from "./CountByArtistsDialog";
 import SearchDialog from "./SearchDialog";
 import SortDialog from "./SortDialog";
 
@@ -10,6 +11,7 @@ export default function ButtonList({ initialSongs, songs, setSongs }) {
       <SortDialog songs={songs} setSongs={setSongs} />
       <AddMusicDialog />
       <SearchDialog initialSongs={initialSongs} setSongs={setSongs} />
+      <CountByArtistsDialog initialSongs={initialSongs} />
     </div>
   );
 }
