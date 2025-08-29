@@ -31,7 +31,7 @@ export default function AddMusicDialog() {
             <DialogDescription>Conexão com API do Spotify</DialogDescription>
           </DialogHeader>
           <Input
-            form="add-music"
+            form="add-song"
             name="url"
             placeholder="Cole o link da música aqui"
           />
@@ -56,14 +56,14 @@ function SubmitButton({ onOpenChange }) {
       window.alert("Música adicionada com sucesso!");
     } catch (error) {
       console.error(error.message);
-      window.alert("Erro ao adicionar música.");
+      window.alert("Insira um link válido para uma track no Spotify.");
     } finally {
       onOpenChange(false);
     }
   }
 
   return (
-    <form name="add-music" id="add-music" action={handleSubmit}>
+    <form name="add-song" id="add-song" action={handleSubmit}>
       <Button ref={submitButtonRef} type="submit">
         Adicionar
       </Button>
