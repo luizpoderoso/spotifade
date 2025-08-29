@@ -59,9 +59,13 @@ export default function CountByArtistsDialog({ initialSongs }) {
             <div
               className={`relative h-full max-h-[250px] w-full overflow-y-auto pr-4`}
             >
-              <ChartContainer config={chartConfig} className="w-full">
+              <ChartContainer
+                config={chartConfig}
+                style={{ height: `${chartData.length * 35}px` }}
+                className="w-full"
+              >
                 <BarChart
-                  barSize={40}
+                  barSize={35}
                   accessibilityLayer
                   data={chartData}
                   layout="vertical"
