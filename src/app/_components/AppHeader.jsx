@@ -31,7 +31,7 @@ export default function AppHeader() {
         </SignedOut>
         <SignedIn>
           <Link href="/musics">
-            <Button variant="ghost">Suas Músicas</Button>
+            <Button variant="ghost">Acessar CRUD</Button>
           </Link>
           <UserButton />
         </SignedIn>
