@@ -47,3 +47,11 @@ export const searchFilter = (musics, searchTerm) => {
   );
   return filtered;
 };
+
+// Remover um elemento de uma lista
+export const removeElement = (array, element) =>
+  array.filter((item) => item !== element);
+
+// Adicionar um elemento a uma lista
+export const addElement = (array, element) =>
+  array.includes(element) ? array : [...array, element];

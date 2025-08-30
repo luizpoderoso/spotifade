@@ -7,8 +7,9 @@ import Link from "next/link";
 import DeleteButton from "./DeleteButton";
 import EditDialog from "./EditDialog";
 import { formatDuration } from "@/lib/aux";
+import MusicArtists from "./MusicArtists";
 
-export default function MusicList({ songs }) {
+export default function MusicList({ songs, filters, setFilters }) {
   return (
     <ul className="w-full flex flex-col items-center gap-5">
       {songs.map((song) => (
@@ -22,7 +23,11 @@ export default function MusicList({ songs }) {
             />
             <div className="w-full flex flex-col py-3 -space-y-1 px-3">
               <p className="text-sm font-semibold">{song.title}</p>
-              <p className="text-xs text-gray-400">{song.artists.join(", ")}</p>
+              <MusicArtists
+                artists={song.artists}
+                filters={filters}
+                setFilters={setFilters}
+              />
               <p className="text-xs">{formatDuration(song.durationMs)}</p>
               <div className="grow"></div>
               <div className="w-full flex relative justify-between">

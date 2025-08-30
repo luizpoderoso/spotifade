@@ -3,9 +3,11 @@
 import { useEffect, useState } from "react";
 import ButtonList from "./button-list/ButtonList";
 import MusicList from "./music-list/MusicList";
+import FilterList from "./filter-list/FilterList";
 
 export default function MusicsView({ initialSongs }) {
   const [songs, setSongs] = useState([]);
+  const [filters, setFilters] = useState([]);
 
   useEffect(() => {
     setSongs(initialSongs);
@@ -19,7 +21,8 @@ export default function MusicsView({ initialSongs }) {
           songs={songs}
           setSongs={setSongs}
         />
-        <MusicList songs={songs} />
+        <FilterList filters={filters} setFilters={setFilters} />
+        <MusicList songs={songs} filters={filters} setFilters={setFilters} />
       </div>
     </div>
   );
