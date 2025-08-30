@@ -1,6 +1,6 @@
 # SpotiFade
 
-Projeto de faculdade dos alunos:
+Projeto de Programação Funcional de Ciência da Computação - UFS 2025.1, desenvolvido pelo alunos da Equipe E:
 
 - Douglas
 - Luiz Poderoso
