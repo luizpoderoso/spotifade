@@ -33,7 +33,7 @@ export default function MusicList({ songs, filters, setFilters }) {
               <p className="text-xs">{formatDuration(song.durationMs)}</p>
               <div className="grow"></div>
               <div className="w-full flex relative justify-between">
-                <div className="flex justify-start w-full pr-3">
+                <div className="flex justify-start w-full pr-1 md:pr-3">
                   <Link className="w-full" href={song.spotifyUrl}>
                     <Button className="w-full" variant="outline">
                       Ouvir
@@ -41,7 +41,7 @@ export default function MusicList({ songs, filters, setFilters }) {
                     </Button>
                   </Link>
                 </div>
-                <div className="flex justify-end gap-2">
+                <div className="flex justify-end gap-1 md:gap-2">
                   <DetailsDialog song={song} />
                   <EditDialog song={song} />
                   <DeleteButton id={song.spotifyId} />
