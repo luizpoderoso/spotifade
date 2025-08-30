@@ -8,6 +8,7 @@ import DeleteButton from "./DeleteButton";
 import EditDialog from "./EditDialog";
 import { formatDuration } from "@/lib/aux";
 import MusicArtists from "./MusicArtists";
+import { Info } from "lucide-react";
 
 export default function MusicList({ songs, filters, setFilters }) {
   return (
@@ -22,7 +23,9 @@ export default function MusicList({ songs, filters, setFilters }) {
               height={130}
             />
             <div className="w-full flex flex-col py-3 -space-y-1 px-3">
-              <p className="text-sm font-semibold">{song.title}</p>
+              <Link href={`/musics/${song._id}`}>
+                <p className="text-sm font-semibold">{song.title}</p>
+              </Link>
               <MusicArtists
                 artists={song.artists}
                 filters={filters}
@@ -40,6 +43,11 @@ export default function MusicList({ songs, filters, setFilters }) {
                   </Link>
                 </div>
                 <div className="flex justify-end gap-2">
+                  <Link href={`/musics/${song._id}`}>
+                    <Button>
+                      <Info />
+                    </Button>
+                  </Link>
                   <EditDialog song={song} />
                   <DeleteButton id={song.spotifyId} />
                 </div>
