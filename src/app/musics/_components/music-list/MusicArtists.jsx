@@ -8,7 +8,7 @@ export default function MusicArtists({ artists, filters, setFilters }) {
           key={index}
           className="text-xs text-gray-400 hover:text-red-400 hover:cursor-pointer"
           onClick={() =>
-            setFilters(addElement(filters, { type: "artist", value: artist }))
+            setFilters(addElement(filters, { type: "artists", value: artist }))
           }
         >
           {artist}

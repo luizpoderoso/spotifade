@@ -11,7 +11,7 @@ import MusicArtists from "./MusicArtists";
 
 export default function MusicList({ songs, filters, setFilters }) {
   return (
-    <ul className="w-full flex flex-col items-center gap-5">
+    <ul className="w-full flex flex-col items-center gap-5 mt-2">
       {songs.map((song) => (
         <li className="w-full max-w-sm sm:max-w-md" key={song._id}>
           <Card className="w-full h-full flex flex-row py-0 rounded overflow-hidden gap-0">

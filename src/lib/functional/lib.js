@@ -1,7 +1,3 @@
-// Mostra as músicas por artista
-const listMusicByArtist = (musics, singerName) =>
-  musics.filter((music) => music.singer === singerName);
-
 // Ordena as músicas por popularidade
 export const sortMusicByPopularity = (musics) => {
   return musics.slice().sort((a, b) => b.popularity - a.popularity);
@@ -28,13 +24,8 @@ const functionalForEach = ([x, ...xs], callback) => {
   if (countLength(xs) > 0) functionalForEach(xs, callback);
 };
 
-const countLength = ([x, ...xs]) => (x === undefined ? 0 : 1 + countLength(xs));
-
-// Modifica os dados já existentes em uma música
-const updateMusicInfo = (music, toUpdate) => ({
-  ...music,
-  ...toUpdate,
-});
+export const countLength = ([x, ...xs]) =>
+  x === undefined ? 0 : 1 + countLength(xs);
 
 // Busca músicas por título ou artista
 export const searchFilter = (musics, searchTerm) => {
@@ -55,3 +46,17 @@ export const removeElement = (array, element) =>
 // Adicionar um elemento a uma lista
 export const addElement = (array, element) =>
   array.includes(element) ? array : [...array, element];
+
+export const filterMusics = (musics, filters) =>
+  filters.reduce((acc, curr) => {
+    const validMusics = musics.filter((music) => {
+      if (curr.type === "artists") return music.artists.includes(curr.value);
+    });
+
+    functionalForEach(validMusics, (music) => {
+      const exists = acc.some((item) => item._id === music._id);
+      if (!exists) acc.push(music);
+    });
+
+    return acc;
+  }, []);
