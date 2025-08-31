@@ -1,6 +1,11 @@
-// Ordena as músicas por popularidade
+// Ordena as músicas por popularidade (mais populares)
 export const sortMusicByPopularity = (musics) => {
   return musics.slice().sort((a, b) => b.popularity - a.popularity);
+};
+
+// Ordena as músicas por popularidade (mais populares)
+export const sortMusicByMinorPopularity = (musics) => {
+  return musics.slice().sort((a, b) => a.popularity - b.popularity);
 };
 
 // Mostra as músicas por data (mais nova)
@@ -9,6 +14,15 @@ export const sortMusicByReleaseDate = (musics) => {
     return new Date(b.releaseDate) - new Date(a.releaseDate);
   });
 };
+
+// Mostra as músicas por data (mais nova)
+export const sortMusicByReleaseDateOlder = (musics) => {git 
+  return [...musics].sort((a, b) => {
+    return new Date(b.releaseDate) - new Date(a.releaseDate);
+  });
+};
+
+
 
 // Faz a contagem de quantas músicas cada artista possui
 export const countMusicsByArtists = (musics) =>
@@ -60,3 +74,33 @@ export const filterMusics = (musics, filters) =>
 
     return acc;
   }, []);
+
+  // Ordem alfabética crescente (A-Z)
+const sortAlphabeticalAsc = (items, key = null) => {
+    return [...items].sort((a, b) => {
+        const valueA = key ? a[key].toString().toLowerCase() : a.toString().toLowerCase();
+        const valueB = key ? b[key].toString().toLowerCase() : b.toString().toLowerCase();
+        
+        return valueA.localeCompare(valueB);
+    });
+};
+
+// Ordem alfabética decrescente (Z-A)
+const sortAlphabeticalDesc = (items, key = null) => {
+    return [...items].sort((a, b) => {
+        const valueA = key ? a[key].toString().toLowerCase() : a.toString().toLowerCase();
+        const valueB = key ? b[key].toString().toLowerCase() : b.toString().toLowerCase();
+        
+        return valueB.localeCompare(valueA);
+    });
+};
+
+// Ordenar por duração (mais curta primeiro)
+const sortByDurationAsc = (musics) => {
+    return [...musics].sort((a, b) => a.duration - b.duration);
+};
+
+// Ordenar por duração (mais longa primeiro)
+const sortByDurationDesc = (musics) => {
+    return [...musics].sort((a, b) => b.duration - a.duration);
+};
