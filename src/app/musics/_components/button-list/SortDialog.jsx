@@ -14,6 +14,8 @@ import {
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import {
+  sortAlphabeticalAsc,
+  sortAlphabeticalDesc,
   sortByDurationAsc,
   sortByDurationDesc,
   sortMusicByMinorPopularity,
@@ -45,6 +47,10 @@ export default function SortDialog({ songs, setSongs }) {
       setSongs(sortByDurationDesc(songs));
     } else if (option === "duration-cresc") {
       setSongs(sortByDurationAsc(songs));
+    } else if (option === "title-decresc") {
+      setSongs(sortAlphabeticalDesc(songs));
+    } else if (option === "title-cresc") {
+      setSongs(sortAlphabeticalAsc(songs));
     } else {
       window.alert("Escolha uma opção válida!");
       setOption("");
@@ -72,9 +78,7 @@ export default function SortDialog({ songs, setSongs }) {
                 value="popularity-decresc"
                 id="popularity-decresc"
               />
-              <Label htmlFor="popularity-decresc">
-                Mais Populares
-              </Label>
+              <Label htmlFor="popularity-decresc">Mais Populares</Label>
             </div>
             <div className="flex items-center space-x-2">
               <RadioGroupItem value="popularity-cresc" id="popularity-cresc" />
@@ -85,18 +89,14 @@ export default function SortDialog({ songs, setSongs }) {
                 value="releaseDate-decresc"
                 id="releaseDate-decresc"
               />
-              <Label htmlFor="releaseDate-decresc">
-                Mais Novas
-              </Label>
+              <Label htmlFor="releaseDate-decresc">Mais Novas</Label>
             </div>
             <div className="flex items-center space-x-2">
               <RadioGroupItem
                 value="releaseDate-cresc"
                 id="releaseDate-cresc"
               />
-              <Label htmlFor="releaseDate-cresc">
-                Mais Velhas
-              </Label>
+              <Label htmlFor="releaseDate-cresc">Mais Velhas</Label>
             </div>
             <div className="flex items-center space-x-2">
               <RadioGroupItem value="duration-decresc" id="duration-decresc" />
@@ -105,6 +105,16 @@ export default function SortDialog({ songs, setSongs }) {
             <div className="flex items-center space-x-2">
               <RadioGroupItem value="duration-cresc" id="duration-cresc" />
               <Label htmlFor="dduration-cresc">Mais Curtas</Label>
+            </div>
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="title-decresc" id="title-decresc" />
+              <Label htmlFor="title-decresc">
+                Ordem Alfabética Decrescente
+              </Label>
+            </div>
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="title-cresc" id="title-cresc" />
+              <Label htmlFor="title-cresc">Ordem Alfabética Crescente</Label>
             </div>
           </RadioGroup>
           <div>

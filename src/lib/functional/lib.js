@@ -74,22 +74,22 @@ export const filterMusics = (musics, filters) =>
   }, []);
 
   // Ordem alfabética crescente (A-Z)
-const sortAlphabeticalAsc = (items, key = null) => {
-    return [...items].sort((a, b) => {
-        const valueA = key ? a[key].toString().toLowerCase() : a.toString().toLowerCase();
-        const valueB = key ? b[key].toString().toLowerCase() : b.toString().toLowerCase();
+export const sortAlphabeticalAsc = (musics) => {
+    return [...musics].sort((a, b) => {
+        const titleA = a.title.toLowerCase();
+        const titleB = b.title.toLowerCase();
         
-        return valueA.localeCompare(valueB);
+        return titleA.localeCompare(titleB);
     });
 };
 
 // Ordem alfabética decrescente (Z-A)
-const sortAlphabeticalDesc = (items, key = null) => {
-    return [...items].sort((a, b) => {
-        const valueA = key ? a[key].toString().toLowerCase() : a.toString().toLowerCase();
-        const valueB = key ? b[key].toString().toLowerCase() : b.toString().toLowerCase();
+export const sortAlphabeticalDesc = (musics) => {
+    return [...musics].sort((a, b) => {
+        const titleA = a.title.toLowerCase();
+        const titleB = b.title.toLowerCase();
         
-        return valueB.localeCompare(valueA);
+        return titleB.localeCompare(titleA);
     });
 };
 
