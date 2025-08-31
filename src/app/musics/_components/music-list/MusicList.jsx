@@ -6,9 +6,8 @@ import { Play } from "lucide-react";
 import Link from "next/link";
 import DeleteButton from "./DeleteButton";
 import EditDialog from "./EditDialog";
-import { formatDuration } from "@/lib/aux";
+import { formatDuration } from "@/lib/auxilliary";
 import MusicArtists from "./MusicArtists";
-import { Info } from "lucide-react";
 import DetailsDialog from "./DetailsDialog";
 
 export default function MusicList({ songs, filters, setFilters }) {

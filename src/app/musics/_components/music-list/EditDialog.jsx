@@ -14,7 +14,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { updateMusic } from "@/lib/actions/update-music";
-import { formatDuration } from "@/lib/aux";
+import { formatDuration } from "@/lib/auxilliary";
 import { Pencil } from "lucide-react";
 import { useRef, useState } from "react";
 

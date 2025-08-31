@@ -9,7 +9,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { formatDuration } from "@/lib/aux";
+import { formatDuration } from "@/lib/auxilliary";
 import { Info } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
