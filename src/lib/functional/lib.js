@@ -15,14 +15,12 @@ export const sortMusicByReleaseDate = (musics) => {
   });
 };
 
-// Mostra as músicas por data (mais nova)
-export const sortMusicByReleaseDateOlder = (musics) => {git 
+// Mostra as músicas por data (mais velha)
+export const sortMusicByReleaseDateOlder = (musics) => {
   return [...musics].sort((a, b) => {
-    return new Date(b.releaseDate) - new Date(a.releaseDate);
+    return new Date(a.releaseDate) - new Date(b.releaseDate);
   });
 };
-
-
 
 // Faz a contagem de quantas músicas cada artista possui
 export const countMusicsByArtists = (musics) =>
@@ -96,11 +94,11 @@ const sortAlphabeticalDesc = (items, key = null) => {
 };
 
 // Ordenar por duração (mais curta primeiro)
-const sortByDurationAsc = (musics) => {
-    return [...musics].sort((a, b) => a.duration - b.duration);
+export const sortByDurationAsc = (musics) => {
+    return [...musics].sort((a, b) => a.durationMs - b.durationMs);
 };
 
 // Ordenar por duração (mais longa primeiro)
-const sortByDurationDesc = (musics) => {
-    return [...musics].sort((a, b) => b.duration - a.duration);
+export const sortByDurationDesc = (musics) => {
+    return [...musics].sort((a, b) => b.durationMs - a.durationMs);
 };
