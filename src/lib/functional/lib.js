@@ -3,7 +3,7 @@ export const sortMusicByPopularity = (musics) => {
   return musics.slice().sort((a, b) => b.popularity - a.popularity);
 };
 
-// Ordena as músicas por popularidade (mais populares)
+// Ordena as músicas por popularidade (menos populares)
 export const sortMusicByMinorPopularity = (musics) => {
   return musics.slice().sort((a, b) => a.popularity - b.popularity);
 };
@@ -30,6 +30,8 @@ export const countMusicsByArtists = (musics) =>
     });
     return acc;
   }, {});
+
+  // { "Artist Name": 3, "Another Artist": 5, ... }
 
 const functionalForEach = ([x, ...xs], callback) => {
   callback(x);
@@ -59,6 +61,9 @@ export const removeElement = (array, element) =>
 export const addElement = (array, element) =>
   array.includes(element) ? array : [...array, element];
 
+
+// filters = [{ type: "artists", value: "Artist Name" }, ...]
+
 export const filterMusics = (musics, filters) =>
   filters.reduce((acc, curr) => {
     const validMusics = musics.filter((music) => {
@@ -73,24 +78,36 @@ export const filterMusics = (musics, filters) =>
     return acc;
   }, []);
 
-  // Ordem alfabética crescente (A-Z)
-export const sortAlphabeticalAsc = (musics) => {
-    return [...musics].sort((a, b) => {
-        const titleA = a.title.toLowerCase();
-        const titleB = b.title.toLowerCase();
-        
-        return titleA.localeCompare(titleB);
-    });
+  // lista de musicas
+
+
+
+// Função recursiva para comparar duas strings (A-Z, a-z, sem acentuação)
+export const recursiveStringCompare = (a, b, i = 0) => {
+  if (i >= a.length && i >= b.length) return 0; // Iguais
+  if (i >= a.length) return -1; // a terminou antes
+  if (i >= b.length) return 1;  // b terminou antes
+
+  const charA = a[i].toLowerCase();
+  const charB = b[i].toLowerCase();
+
+  if (charA < charB) return -1;
+  if (charA > charB) return 1;
+  return recursiveStringCompare(a, b, i + 1);
 };
 
-// Ordem alfabética decrescente (Z-A)
+// Ordem alfabética crescente (A-Z) usando a função recursiva
+export const sortAlphabeticalAsc = (musics) => {
+  return [...musics].sort((a, b) =>
+    recursiveStringCompare(a.title, b.title)
+  );
+};
+
+// Ordem alfabética decrescente (Z-A) usando a função recursiva
 export const sortAlphabeticalDesc = (musics) => {
-    return [...musics].sort((a, b) => {
-        const titleA = a.title.toLowerCase();
-        const titleB = b.title.toLowerCase();
-        
-        return titleB.localeCompare(titleA);
-    });
+  return [...musics].sort((a, b) =>
+    recursiveStringCompare(b.title, a.title)
+  );
 };
 
 // Ordenar por duração (mais curta primeiro)
