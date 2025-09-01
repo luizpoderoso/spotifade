@@ -7,6 +7,9 @@ Projeto de Programação Funcional de Ciência da Computação - UFS 2025.1, des
 - Luiz Carlos
 - Pedro
 
+## Vídeo
+URL: https://youtube.com/shorts/jbtUA_xWU_w?feature=share
+
 ## Getting Started
 
 First, run the development server:
